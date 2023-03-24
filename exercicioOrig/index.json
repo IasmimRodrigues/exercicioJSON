@@ -1,27 +1,22 @@
 [
     {
-        "nome" : "Iasmim",
-        "disciplina" : "História",
-        "media" : 9
+        "nome": "João",
+        "disciplina": "Matemática",
+        "media": 7.5
     },
     {
-        "nome" : "Leticia",
-        "disciplina" : "Ingles",
-        "media" : 10
+        "nome": "Maria",
+        "disciplina": "História",
+        "media": 9.0
     },
     {
-        "nome" : "Tamiris",
-        "disciplina" : "Matematica",
-        "media" : 9.5
+        "nome": "Pedro",
+        "disciplina": "Geografia",
+        "media": 6.0
     },
     {
-        "nome" : "Maria",
-        "disciplina" : "Português",
-        "media" : 7
-    },
-    {
-        "nome" : "João",
-        "disciplina" : "Banco de dados",
-        "media" : 6
+        "nome": "Ana",
+        "disciplina": "Português",
+        "media": 8.5
     }
-]
+  ]

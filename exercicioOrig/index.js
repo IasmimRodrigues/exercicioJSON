@@ -1,7 +1,7 @@
 fetch("index.json")
 
-.then(function(dados) {
-    return dados.json();
+.then(function(response) {
+    return response.json();
 })
 
 .then(function(alunos){
@@ -19,7 +19,38 @@ fetch("index.json")
     }
 
     placeholder.innerHTML = out;
-     
     
 })
 
+let alunosObj = JSON.parse(alunos);
+
+function ordenarNome() {
+    alunos.sort((a, b) => 
+    a.aluno.nome.localeCompare(b.nome));
+  }
+
+  function ordenarNota() {
+    alunos.sort((a, b) =>
+    b.media - a.media);
+
+    exibirAlunos();
+  }
+
+  function calcularMedia() {
+    let total = alunos.reduce((soma, aluno) => soma + aluno.media, 0);
+
+    const media = total / alunos.length;
+    
+    
+    alert(`A média das notas é ${media.toFixed(2)}`);
+
+  }
+  exibirAlunos();
+
+  const botaoNome = document.getElementById("nome");
+      const botaoNota = document.getElementById("nota");
+      const botaoMedia = document.getElementById("media");
+      
+      botaoNome.addEventListener("click", ordenarNome);
+      botaoNota.addEventListener("click", ordenarNota);
+      botaoMedia.addEventListener("click", calcularMedia);
