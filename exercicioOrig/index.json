@@ -1,0 +1,27 @@
+[
+    {
+        "nome" : "Iasmim",
+        "disciplina" : "História",
+        "media" : 9
+    },
+    {
+        "nome" : "Leticia",
+        "disciplina" : "Ingles",
+        "media" : 10
+    },
+    {
+        "nome" : "Tamiris",
+        "disciplina" : "Matematica",
+        "media" : 9.5
+    },
+    {
+        "nome" : "Maria",
+        "disciplina" : "Português",
+        "media" : 7
+    },
+    {
+        "nome" : "João",
+        "disciplina" : "Banco de dados",
+        "media" : 6
+    }
+]

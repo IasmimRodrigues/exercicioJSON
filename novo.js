@@ -12,6 +12,8 @@ fetch("novo.json")
         out += `
             <tr>
                 <td> ${product.nome}</td>
+                <td> ${product.disciplina}</td>
+                <td> ${product.media}</td>
             </tr>
         `;
     }
