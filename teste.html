@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tabela alunos</title>
+  </head>
+  <body>
+    <h1>Tabela de Alunos</h1>
+
+    <table id="alunosTable">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Disciplina</th>
+          <th>Média</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <input type="button" value="Ordenar por nome" id="nome" />
+    <input type="button" value="Ordenar por nota" id="nota" />
+    <input type="button" value="Média das notas" id="media" />
+
+    <script>
+      let estudantes = [
+        {
+          nome: "Iasmim",
+          disciplina: "História",
+          media: 9,
+        },
+        {
+          nome: "Leticia",
+          disciplina: "Ingles",
+          media: 10,
+        },
+        {
+          nome: "Tamiris",
+          disciplina: "Matematica",
+          media: 9.5,
+        },
+      ];
+
+      let jsonEstudantes = JSON.stringify(estudantes);
+      let objEstudantes = JSON.parse(jsonEstudantes);
+
+      objEstudantes.map((estudantes) => {
+        console.log(
+          
+        );
+      });
+
+      // const alunos = [
+      //   {
+      //       nome: "Iasmim",
+      //       disciplina: "Estrutura",
+      //       media: 9
+      //   },
+      //   {
+      //       nome: "Leticia",
+      //       disciplina: "Estatistica",
+      //       media: 8
+      //   },
+      //   {
+      //       nome: "Angela",
+      //       disciplina: "Design",
+      //       media: 7
+      //   },
+      //   {
+      //       nome: "Marcos",
+      //       disciplina: "Padroes",
+      //       media: 6
+      //   }
+      // ];
+
+      // let jsonEstudantes = JSON.stringify(estudantes)
+
+      // let objEstudantes = JSON.parse(jsonEstudantes)
+
+      // console.log(objEstudantes)
+
+      const tabela = document.getElementById("alunosTable");
+
+      const tbody = tabela.querySelector("tbody");
+
+      function exibirAlunos() {
+        tbody.innerHTML = "";
+        for (let aluno of alunos) {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+          <td>${aluno.nome}</td>
+          <td>${aluno.disciplina}</td>
+          <td>${aluno.media}</td>`;
+
+          tbody.appendChild(tr);
+        }
+      }
+
+      function ordenarNome() {
+        alunos.sort((a, b) => a.nome.localeCompare(b.nome));
+
+        exibirAlunos();
+      }
+
+      function ordenarNota() {
+        alunos.sort((a, b) => b.media - a.media);
+
+        exibirAlunos();
+      }
+
+      function calcularMedia() {
+        let total = alunos.reduce((soma, aluno) => soma + aluno.media, 0);
+
+        const media = total / alunos.length;
+
+        alert(`A média das notas é ${media.toFixed(2)}`);
+      }
+      exibirAlunos();
+
+      const botaoNome = document.getElementById("nome");
+      const botaoNota = document.getElementById("nota");
+      const botaoMedia = document.getElementById("media");
+
+      botaoNome.addEventListener("click", ordenarNome);
+      botaoNota.addEventListener("click", ordenarNota);
+      botaoMedia.addEventListener("click", calcularMedia);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+{
+    "estudantes": [
+    {
+        "nome" : "Iasmim",
+        "disciplina" : "História",
+        "media" : 9
+    },
+    {
+        "nome" : "Leticia",
+        "disciplina" : "Ingles",
+        "media" : 10
+    },
+    {
+        "nome" : "Tamiris",
+        "disciplina" : "Matematica",
+        "media" : 9.5
+    }
+]
+}
