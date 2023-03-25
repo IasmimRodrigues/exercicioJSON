@@ -40,54 +40,56 @@
       onclick="calcularMedia()"
     />
 
-    <!-- <script src="index.js"></script> -->
     <script>
-      fetch("index.json")
+      let estudantes;
+
+      function dadosJson() {
+        let placeholder = document.querySelector("#data-json");
+        let out = "";
+
+        for (let estudante of estudantes) {
+          out += `
+            <tr>
+                <td> ${estudante.nome}</td>
+                <td> ${estudante.disciplina}</td>
+                <td> ${estudante.media}</td>
+            </tr>
+        `;
+        }
+
+        placeholder.innerHTML = out;
+      }
+
+      fetch("estudantes.json")
         .then(function (response) {
           return response.json();
         })
 
         .then(function (alunos) {
-          let placeholder = document.querySelector("#data-json");
-          let out = "";
+          estudantes = alunos;
 
-          for (let aluno of alunos) {
-            out += `
-            <tr>
-                <td> ${aluno.nome}</td>
-                <td> ${aluno.disciplina}</td>
-                <td> ${aluno.media}</td>
-            </tr>
-        `;
-          }
-
-          placeholder.innerHTML = out;
+          dadosJson();
         });
 
       function ordenarNome() {
-        alunos.sort((a, b) => a.nome.localeCompare(b.nome));
+        estudantes.sort((a, b) => a.nome.localeCompare(b.nome));
 
-        alunos();
+        dadosJson();
       }
 
       function ordenarNota() {
-        alunos.sort((a, b) => b.media - a.media);
+        estudantes.sort((a, b) => b.media - a.media);
 
-        alunos();
+        dadosJson();
       }
 
       function calcularMedia() {
-        let total = alunos.reduce((soma, aluno) => soma + aluno.media, 0);
+        let total = estudantes.reduce((soma, aluno) => soma + aluno.media, 0);
 
-        const media = total / alunos.length;
+        const media = total / estudantes.length;
 
-        alert(`A média das notas é ${media.toFixed(2)}`);
+        alert(`Média das notas: ${media.toFixed(2)}`);
       }
-      alunos();
-
-      botaoNome.addEventListener("click", ordenarNome);
-      botaoNota.addEventListener("click", ordenarNota);
-      botaoMedia.addEventListener("click", calcularMedia);
     </script>
   </body>
 </html>

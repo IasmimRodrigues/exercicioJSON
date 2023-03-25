@@ -18,5 +18,10 @@
         "nome": "Ana",
         "disciplina": "Português",
         "media": 8.5
+    },
+    {
+        "nome": "Iasmim",
+        "disciplina": "Inglês",
+        "media": 10
     }
   ]
