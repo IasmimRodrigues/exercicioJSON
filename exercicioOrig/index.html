@@ -1,32 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exercício JSON</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Tabela de alunos</h1>
 
     <table>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Disciplina</th>
-            <th>Média</th>
-          </tr>
-        </thead>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Disciplina</th>
+          <th>Média</th>
+        </tr>
+      </thead>
 
-        <tbody id="data-json">
+      <tbody id="data-json"></tbody>
+    </table>
 
-        </tbody>
-      </table>
-  
-      <input type="button" value="Ordenar por nome" id="nome" onclick="ordenarNome()" />
-      <input type="button" value="Ordenar por nota" id="nota" onclick="ordenarNota()" />
-      <input type="button" value="Média das notas" id="media" onclick="calcularMedia()" />
+    <input
+      type="button"
+      value="Ordenar por nome"
+      id="nome"
+      onclick="ordenarNome()"
+    />
+    <input
+      type="button"
+      value="Ordenar por nota"
+      id="nota"
+      onclick="ordenarNota()"
+    />
+    <input
+      type="button"
+      value="Média das notas"
+      id="media"
+      onclick="calcularMedia()"
+    />
 
-      <script src="index.js"></script>
-</body>
+    <!-- <script src="index.js"></script> -->
+    <script>
+      fetch("index.json")
+        .then(function (response) {
+          return response.json();
+        })
+
+        .then(function (alunos) {
+          let placeholder = document.querySelector("#data-json");
+          let out = "";
+
+          for (let aluno of alunos) {
+            out += `
+            <tr>
+                <td> ${aluno.nome}</td>
+                <td> ${aluno.disciplina}</td>
+                <td> ${aluno.media}</td>
+            </tr>
+        `;
+          }
+
+          placeholder.innerHTML = out;
+        });
+
+      function ordenarNome() {
+        alunos.sort((a, b) => a.nome.localeCompare(b.nome));
+
+        alunos();
+      }
+
+      function ordenarNota() {
+        alunos.sort((a, b) => b.media - a.media);
+
+        alunos();
+      }
+
+      function calcularMedia() {
+        let total = alunos.reduce((soma, aluno) => soma + aluno.media, 0);
+
+        const media = total / alunos.length;
+
+        alert(`A média das notas é ${media.toFixed(2)}`);
+      }
+      alunos();
+
+      botaoNome.addEventListener("click", ordenarNome);
+      botaoNota.addEventListener("click", ordenarNota);
+      botaoMedia.addEventListener("click", calcularMedia);
+    </script>
+  </body>
 </html>
