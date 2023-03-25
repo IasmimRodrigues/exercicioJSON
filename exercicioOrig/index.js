@@ -1,15 +1,14 @@
 fetch("index.json")
-
-.then(function(response) {
+  .then(function (response) {
     return response.json();
-})
+  })
 
-.then(function(alunos){
+  .then(function (alunos) {
     let placeholder = document.querySelector("#data-json");
     let out = "";
 
-    for(let aluno of alunos) {
-        out += `
+    for (let aluno of alunos) {
+      out += `
             <tr>
                 <td> ${aluno.nome}</td>
                 <td> ${aluno.disciplina}</td>
@@ -19,38 +18,29 @@ fetch("index.json")
     }
 
     placeholder.innerHTML = out;
-    
-})
-
-let alunosObj = JSON.parse(alunos);
+  });
 
 function ordenarNome() {
-    alunos.sort((a, b) => 
-    a.aluno.nome.localeCompare(b.nome));
-  }
+  alunos.sort((a, b) => a.nome.localeCompare(b.nome));
 
-  function ordenarNota() {
-    alunos.sort((a, b) =>
-    b.media - a.media);
+  alunos();
+}
 
-    exibirAlunos();
-  }
+function ordenarNota() {
+  alunos.sort((a, b) => b.media - a.media);
 
-  function calcularMedia() {
-    let total = alunos.reduce((soma, aluno) => soma + aluno.media, 0);
+  alunos();
+}
 
-    const media = total / alunos.length;
-    
-    
-    alert(`A média das notas é ${media.toFixed(2)}`);
+function calcularMedia() {
+  let total = alunos.reduce((soma, aluno) => soma + aluno.media, 0);
 
-  }
-  exibirAlunos();
+  const media = total / alunos.length;
 
-  const botaoNome = document.getElementById("nome");
-      const botaoNota = document.getElementById("nota");
-      const botaoMedia = document.getElementById("media");
-      
-      botaoNome.addEventListener("click", ordenarNome);
-      botaoNota.addEventListener("click", ordenarNota);
-      botaoMedia.addEventListener("click", calcularMedia);
+  alert(`A média das notas é ${media.toFixed(2)}`);
+}
+alunos();
+
+botaoNome.addEventListener("click", ordenarNome);
+botaoNota.addEventListener("click", ordenarNota);
+botaoMedia.addEventListener("click", calcularMedia);
